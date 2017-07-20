@@ -1,0 +1,41 @@
+.cascade {}
+
+.cascade .menu {
+    position: relative;
+}
+
+.cascade .menu .menu-list {}
+
+.cascade .menu .menu-list .level1 {
+    width: 158px;
+    min-height: 392px;
+    background-color: #ededed;
+    float: left;
+    overflow-y: hidden;
+}
+
+.cascade .menu .menu-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cascade .menu .menu-list .l1-list-item {
+    height: 39px;
+    line-height: 39px;
+    text-align: left;
+    padding-left: 12px;
+    position: relative;
+    padding-right: 12px;
+    cursor: pointer;
+}
+
+.cascade .menu .menu-list .l1-list-item i {
+    font-size: 10px;
+    color: #b4b4b4;
+    position: absolute;
+    right: 0;
+    bottom: 13px;
+    display: inline-block;
+    padding-right: 12px;
+}
