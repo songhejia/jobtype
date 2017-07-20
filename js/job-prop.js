@@ -692,6 +692,12 @@ $boxJob.on('click', '.tag-close', function () {
     if (labelsData < 6) {
         $('.tag-bottom .tag-bottom-left').hide();
     }
+    //显示类别
+    if (position.sign == "it") {
+        $('#boxJobInput span').text(position.chooseLevel1.name + ' - ' + position.chooseLevel2.name + ' - ' + position.chooseTags.map(function (item) { return item.name }).join('/'));
+    } else {
+        $('#boxJobInput span').text(position.chooseLevel1Other.name);
+    }
 });
 
 /*点击查看其他类别*/
