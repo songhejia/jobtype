@@ -7,6 +7,7 @@ var $boxJob = $('#boxJob');
 var $itList = $('#boxJob .it-list');
 var $otherList = $('#boxJob .other-list');
 var $tagList = $('#boxJob .tag-list');
+var $itListThree = $('#boxJob .it-list .it-list-three');
 
 var position = {
     chooseLevel1: labelCacheBean.itCategoryL1List[0],        //被选择的一级选项
@@ -126,6 +127,7 @@ function renderChange() {
             renderLevel3(saveDatas.chooseLevel3, saveDatas.rankLables, saveDatas);
             renderChooseLevel(saveDatas);
             $tagList.show();
+            $itListThree.show();
             $boxJob.css('width', '838px');
         } else {
             position.chooseLevel1 = labelCacheBean.itCategoryL1List[0];
@@ -139,7 +141,7 @@ function renderChange() {
             renderItLevel2(labelCacheBean.itCategoryL1List[0], 0);
             // renderItLevel3(labelCacheBean.itCategoryL1List[0].categoryL2s[0], 0);
             $tagList.hide();
-            $boxJob.css('width', '476px');
+            $boxJob.css('width', '318px');
         }
         $itList.show();
         $otherList.hide();
@@ -465,7 +467,8 @@ $boxJob.on('mouseenter', '#it-list1 li, #other-list1 li', function (e) {
         //重新渲染二级列表
         renderItLevel2(fatherData, 0);
         $tagList.hide();
-        $boxJob.css('width', '476px');
+        $itListThree.hide();
+        $boxJob.css('width', '318px');
     } else {
         var fatherData = labelCacheBean.otherCategoryL1List[num];
         renderLevel1("", num);
@@ -546,6 +549,7 @@ $boxJob.on('mouseenter', '#it-list2 li', function (e) {
     }
 
     $tagList.hide();
+    $itListThree.show();
     $boxJob.css('width', '476px');
     e.stopPropagation();
     e.preventDefault();
