@@ -11,6 +11,7 @@ var $tagList = $('#boxJob .tag-list');
 var position = {
     chooseLevel1: labelCacheBean.itCategoryL1List[0],        //被选择的一级选项
     chooseLevel2: labelCacheBean.itCategoryL1List[0].categoryL2s[0],        //被选择的二级选项
+    chooseLevel3: labelCacheBean.itCategoryL1List[0].categoryL2s[0].categoryL3s[0],        //被选择的三级选项
     chooseLevel1Other: labelCacheBean.otherCategoryL1List[0],   //被选择的一级选项other
     rankLables: "",            //存被选择的职级标签
     sign: "it",             //标记选择是it还是other
@@ -104,8 +105,10 @@ function rewriteData() {
         if (chooseStyle == "it") {
             position.chooseLevel1 = saveDatas.chooseLevel1;
             position.chooseLevel2 = saveDatas.chooseLevel2;
+            position.chooseLevel3 = saveDatas.chooseLevel3;
             position.level1Num = saveDatas.level1Num;
             position.level2Num = saveDatas.level2Num;
+            position.level3Num = saveDatas.level2Num;
         } else {
             position.chooseLevel1Other = saveDatas.chooseLevel1Other;
             position.level1OtherNum = saveDatas.level1OtherNum;
@@ -119,21 +122,24 @@ function renderChange() {
         if (saveDatas.choosePositions != null && chooseStyle == position.sign) {
             renderLevel1(saveDatas.level1Num, "");
             renderItLevel2(saveDatas.chooseLevel1, saveDatas.level2Num);
-            renderLevel3(saveDatas.chooseLevel2, saveDatas.rankLables, saveDatas);
+            renderItLevel3(saveDatas.chooseLevel2, saveDatas.level3Num);
+            renderLevel3(saveDatas.chooseLevel3, saveDatas.rankLables, saveDatas);
             renderChooseLevel(saveDatas);
             $tagList.show();
-            $boxJob.css('width', '680px');
+            $boxJob.css('width', '838px');
         } else {
             position.chooseLevel1 = labelCacheBean.itCategoryL1List[0];
             position.chooseLevel2 = labelCacheBean.itCategoryL1List[0].categoryL2s[0];
+            position.chooseLevel3 = labelCacheBean.itCategoryL1List[0].categoryL2s[0].categoryL3s[0];
             position.level1Num = 0;
             position.level2Num = 0;
             currShow.chooseLevel1 = "";
             currShow.chooseLevel2 = "";
             renderLevel1(0, "");
             renderItLevel2(labelCacheBean.itCategoryL1List[0], 0);
+            // renderItLevel3(labelCacheBean.itCategoryL1List[0].categoryL2s[0], 0);
             $tagList.hide();
-            $boxJob.css('width', '318px');
+            $boxJob.css('width', '476px');
         }
         $itList.show();
         $otherList.hide();
@@ -176,7 +182,7 @@ $(document).mouseup(function (e) {
                 position.sign = chooseStyle;
                 clearData1();
             }
-            clearData2();
+            //clearData2();
         }
     }
 });
@@ -258,13 +264,38 @@ function renderItLevel2(fatherDom, index) {
 }
 
 
+/*三级渲染*/
+function renderItLevel3(fatherDom, index) {
+    var currentData = fatherDom.categoryL3s;
+    var html = "";
+    //遍历数据，生成html
+    for (var i = 0; i < currentData.length; i++) {
+        var L3Name = currentData[i].name;
+        html += '<li class="box-L3List-item" data-belong="categoryL3s" data-num=' + i + '>'
+            + '<span>' + L3Name + '</span>'
+            + '<i class="icon-arrow-right list-arrow"></i>'
+            + '</li>';
+    }
+    $('#it-list3').html(html);
+    //颜色标示出被选中的选项
+    for (var i = 0; i < $('#it-list3 li').length; i++) {
+        var num = parseInt($($('#it-list3 li')[i]).attr('data-num'), 10);
+        if (num == index) {
+            $($('#it-list3 li')[i]).addClass('selected');
+        } else {
+            $($('#it-list3 li')[i]).removeClass('selected');
+        }
+    }
+}
+
+
 /*三级初次渲染+四级渲染*/
 function renderLevel3(fatherData, currentRank, marker) {
     var html = "";
     var currentFatherData;
     var currentData = fatherData.funcLables;
     //有职级标签
-    if (currentRank.length != 0) {
+    if (currentRank && currentRank.length != 0) {
         var rankhtml = "";
         for (var i = 0; i < currentRank.length; i++) {
             var rankName = currentRank[i].name;
@@ -288,7 +319,7 @@ function renderLevel3(fatherData, currentRank, marker) {
 
     //it的类目情况
     if (position.sign == "it") {
-        currentFatherData = position.chooseLevel2;
+        currentFatherData = position.chooseLevel3;
     } else {      //other的情况
         currentFatherData = position.chooseLevel1Other;
     }
@@ -434,7 +465,7 @@ $boxJob.on('mouseenter', '#it-list1 li, #other-list1 li', function (e) {
         //重新渲染二级列表
         renderItLevel2(fatherData, 0);
         $tagList.hide();
-        $boxJob.css('width', '318px');
+        $boxJob.css('width', '476px');
     } else {
         var fatherData = labelCacheBean.otherCategoryL1List[num];
         renderLevel1("", num);
@@ -492,7 +523,7 @@ $boxJob.on('mouseenter', '#it-list2 li', function (e) {
             currShow.level1Num = position.level1Num;
         }
         renderItLevel2(currShow.chooseLevel1, num);
-        renderLevel3(fatherData, currShow.rankLables, position);
+        renderItLevel3(fatherData, 0);
 
     } else {              //如果三级没有选中
         position.chooseLevel2 = fatherData;         //记录下被选择的二级tag
@@ -502,20 +533,76 @@ $boxJob.on('mouseenter', '#it-list2 li', function (e) {
             position.rankLables = "";
         }
         renderItLevel2(position.chooseLevel1, num);
-        renderLevel3(fatherData, position.rankLables, position);
+        renderItLevel3(fatherData, 0);
         $('#boxJobInput span').text('请选择职位类别');
     }
     if (fatherData == position.chooseLevel2) {
-        currShow.chooseLevel2 = "";
+        // currShow.chooseLevel2 = "";
+        // currShow.rankLables = "";
+        // currShow.level2Num = "";
+        // currShow.itChooseAgain = true;
+    } else {
+        currShow.itChooseAgain = false;
+    }
+
+    $tagList.hide();
+    $boxJob.css('width', '476px');
+    e.stopPropagation();
+    e.preventDefault();
+});
+
+/*点击选择三级类别，展现四级列表*/
+$boxJob.on('mouseenter', '#it-list3 li', function (e) {
+    var $me = $(this);
+    var num = $me.attr('data-num');
+    var fatherData;
+    if (currShow.chooseLevel2 != "") {
+        fatherData = currShow.chooseLevel2.categoryL3s[num];
+    } else {
+        fatherData = position.chooseLevel2.categoryL3s[num];
+    }
+
+    if (position.chooseTags.length > 0) {
+        currShow.chooseLevel3 = fatherData;         //记录下被选择的二级tag
+        currShow.level3Num = parseInt(num, 10);
+        if (currShow.chooseLevel1 != "") {
+            currShow.rankLables = currShow.chooseLevel2.rankLables;
+        } else {
+            currShow.rankLables = position.chooseLevel2.rankLables;
+        }
+        if ($me.text() == "管理岗") {
+            currShow.rankLables = "";
+        }
+        if (currShow.chooseLevel1 == "") {
+            currShow.chooseLevel1 = position.chooseLevel1;
+            currShow.rankLables = position.rankLables;
+            currShow.level1Num = position.level1Num;
+        }
+        renderItLevel3(currShow.chooseLevel2 ? currShow.chooseLevel2 : position.chooseLevel2, num);
+        renderLevel3(fatherData, currShow.rankLables, position);
+
+    } else {              //如果三级没有选中
+        position.chooseLevel3 = fatherData;         //记录下被选择的二级tag
+        position.rankLables = position.chooseLevel1.rankLables;
+        position.level3Num = parseInt(num, 10);
+        if ($me.text() == "管理岗") {
+            position.rankLables = "";
+        }
+        renderItLevel3(position.chooseLevel2, num);
+        renderLevel3(fatherData, position.rankLables, position);
+        $('#boxJobInput span').text('请选择职位类别');
+    }
+    if (fatherData == position.chooseLevel3) {
+        currShow.chooseLevel3 = "";
         currShow.rankLables = "";
-        currShow.level2Num = "";
+        currShow.level3Num = "";
         currShow.itChooseAgain = true;
     } else {
         currShow.itChooseAgain = false;
     }
 
     $tagList.show();
-    $boxJob.css('width', '680px');
+    $boxJob.css('width', '838px');
     e.stopPropagation();
     e.preventDefault();
 });
@@ -543,9 +630,12 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
             position.chooseLevel2 = currShow.chooseLevel2;
             position.rankLables = currShow.rankLables;
             position.level2Num = currShow.level2Num;
-            currShow.chooseLevel2 = "";
-            currShow.rankLables = "";
-            currShow.level2Num = "";
+
+            position.chooseLevel3 = currShow.chooseLevel3;
+            position.level3Num = currShow.level3Num;
+            // currShow.chooseLevel2 = "";
+            // currShow.rankLables = "";
+            // currShow.level2Num = "";
         }
     } else {
         if (currShow.chooseLevel1Other != "" && !currShow.otherChooseAgain) {
@@ -585,8 +675,8 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
             //判断是否有选择的标签
             if (position.chooseTags.length > 0) {
                 if (position.sign == "it") {
-                    if (currShow.chooseLevel2 == "") {
-                        fatherData = position.chooseLevel2;
+                    if (currShow.chooseLevel3 == "") {
+                        fatherData = position.chooseLevel3;
                     }
                 } else {
                     if (currShow.chooseLevel1Other == "") {
@@ -595,7 +685,7 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
                 }
             } else {
                 if (position.sign == "it") {
-                    fatherData = position.chooseLevel2;
+                    fatherData = position.chooseLevel3;
                 } else {
                     fatherData = position.chooseLevel1Other;
                 }
@@ -603,7 +693,7 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
             //当前显示三级类目
             var currentShow = fatherData.funcLables;
             //当前选中节点的四级标签
-            var currentShow4 = currentShow[thisNum].relatedLables;
+            var currentShow4 = currentShow[thisNum] ? currentShow[thisNum].relatedLables : [];
             var html = "";
             if (currentShow4.length > 0) {
                 for (var i = 0; i < currentShow4.length; i++) {
@@ -657,7 +747,7 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
 
     //显示类别
     if (position.sign == "it") {
-        $('#boxJobInput span').text(position.chooseLevel1.name + ' - ' + position.chooseLevel2.name + ' - ' + position.chooseTags.map(function (item) { return item.name }).join('/'));
+        $('#boxJobInput span').text(position.chooseLevel1.name + ' - ' + position.chooseLevel2.name + ' - '+ position.chooseLevel3.name + ' - ' + position.chooseTags.map(function (item) { return item.name }).join('/'));
     } else {
         $('#boxJobInput span').text(position.chooseLevel1Other.name);
     }
@@ -773,8 +863,10 @@ $('#boxJob').on('click', '.tag-bottom-right .tag-bottom-sure', function (e) {
             $("#firstType").val(types[0].trim());
             saveDatas.chooseLevel1 = position.chooseLevel1;
             saveDatas.chooseLevel2 = position.chooseLevel2;
+            saveDatas.chooseLevel3 = position.chooseLevel3;
             saveDatas.level1Num = position.level1Num;
             saveDatas.level2Num = position.level2Num;
+            saveDatas.level3Num = position.level3Num;
             saveDatas.rankLables = position.rankLables;
         } else {
             $('#positionType').val($('#boxJobInput span').text());
