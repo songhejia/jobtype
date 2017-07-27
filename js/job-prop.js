@@ -542,7 +542,7 @@ $boxJob.on('mouseenter', '#it-list2 li', function (e) {
         // currShow.level2Num = "";
         // currShow.itChooseAgain = true;
     } else {
-        currShow.itChooseAgain = false;
+        // currShow.itChooseAgain = false;
     }
 
     $tagList.hide();
@@ -563,7 +563,7 @@ $boxJob.on('mouseenter', '#it-list3 li', function (e) {
     }
 
     if (position.chooseTags.length > 0) {
-        currShow.chooseLevel3 = fatherData;         //记录下被选择的二级tag
+        currShow.chooseLevel3 = fatherData;         //记录下被选择的三级tag
         currShow.level3Num = parseInt(num, 10);
         if (currShow.chooseLevel1 != "") {
             currShow.rankLables = currShow.chooseLevel2.rankLables;
@@ -620,16 +620,20 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
 
     //判断点击的是currentShow 还是position里的数据
     if (position.sign == "it") {
-        if ((currShow.chooseLevel1 != "" || currShow.chooseLevel2 != "") && !currShow.itChooseAgain) {
+        // (currShow.chooseLevel1 != "" || currShow.chooseLevel2 != "" || currShow.chooseLevel3 != "") && 
+        if (!currShow.itChooseAgain) {
             clearData2();
+            currShow.itChooseAgain = true;
             if (currShow.chooseLevel1 != "") {
                 position.chooseLevel1 = currShow.chooseLevel1;
                 position.level1Num = currShow.level1Num;
                 currShow.chooseLevel1 = "";
             }
-            position.chooseLevel2 = currShow.chooseLevel2;
-            position.rankLables = currShow.rankLables;
-            position.level2Num = currShow.level2Num;
+            if (currShow.chooseLevel2 != "") {
+                position.chooseLevel2 = currShow.chooseLevel2;
+                position.rankLables = currShow.rankLables;
+                position.level2Num = currShow.level2Num;
+            }
 
             position.chooseLevel3 = currShow.chooseLevel3;
             position.level3Num = currShow.level3Num;
@@ -677,7 +681,8 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
                 if (position.sign == "it") {
                     if (currShow.chooseLevel3 == "") {
                         fatherData = position.chooseLevel3;
-                    }
+                    } else
+                        fatherData = currShow.chooseLevel3;
                 } else {
                     if (currShow.chooseLevel1Other == "") {
                         fatherData = position.chooseLevel1Other;
@@ -747,7 +752,7 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
 
     //显示类别
     if (position.sign == "it") {
-        $('#boxJobInput span').text(position.chooseLevel1.name + ' - ' + position.chooseLevel2.name + ' - '+ position.chooseLevel3.name + ' - ' + position.chooseTags.map(function (item) { return item.name }).join('/'));
+        $('#boxJobInput span').text(position.chooseLevel1.name + ' - ' + position.chooseLevel2.name + ' - ' + position.chooseLevel3.name + ' - ' + position.chooseTags.map(function (item) { return item.name }).join('/'));
     } else {
         $('#boxJobInput span').text(position.chooseLevel1Other.name);
     }

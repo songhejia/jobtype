@@ -1505,72 +1505,81 @@ var labelCacheBean =
                         "id": "10",
                         "showOrder": "0",
                         "name": "项目管理",
-                        "funcLables": [
-                            {
-                                "id": "212",
-                                "showOrder": "0",
-                                "name": "项目管理",
-                                "createType": "SYSTEM",
-                                "createUserId": 0,
-                                "relatedLables": []
-                            },
-                            {
-                                "id": "253",
-                                "showOrder": "0",
-                                "name": "流程管理",
-                                "createType": "SYSTEM",
-                                "createUserId": 0,
-                                "relatedLables": []
-                            },
-                            {
-                                "id": "254",
-                                "showOrder": "0",
-                                "name": "PMO",
-                                "createType": "SYSTEM",
-                                "createUserId": 0,
-                                "relatedLables": []
-                            },
-                            {
-                                "id": "255",
-                                "showOrder": "0",
-                                "name": "PMP",
-                                "createType": "SYSTEM",
-                                "createUserId": 0,
-                                "relatedLables": []
-                            },
-                            {
-                                "id": "256",
-                                "showOrder": "0",
-                                "name": "QA",
-                                "createType": "SYSTEM",
-                                "createUserId": 0,
-                                "relatedLables": []
-                            },
-                            {
-                                "id": "251",
-                                "showOrder": "0",
-                                "name": "风控",
-                                "createType": "SYSTEM",
-                                "createUserId": 0,
-                                "relatedLables": []
-                            },
-                            {
-                                "id": "257",
-                                "showOrder": "0",
-                                "name": "采购",
-                                "createType": "SYSTEM",
-                                "createUserId": 0,
-                                "relatedLables": []
-                            },
-                            {
-                                "id": "258",
-                                "showOrder": "0",
-                                "name": "成本管理",
-                                "createType": "SYSTEM",
-                                "createUserId": 0,
-                                "relatedLables": []
-                            }
-                        ]
+                        "categoryL3s": [{
+                            "id": "1000",
+                            "name": "IT项目管理",
+                            "funcLables": [
+                                {
+                                    "id": "212",
+                                    "showOrder": "0",
+                                    "name": "项目管理",
+                                    "createType": "SYSTEM",
+                                    "createUserId": 0,
+                                    "relatedLables": []
+                                },
+                                {
+                                    "id": "253",
+                                    "showOrder": "0",
+                                    "name": "流程管理",
+                                    "createType": "SYSTEM",
+                                    "createUserId": 0,
+                                    "relatedLables": []
+                                }
+                            ]
+                        }, {
+                            "id": "1001",
+                            "name": "建筑项目管理",
+                            "funcLables": [
+                                {
+                                    "id": "254",
+                                    "showOrder": "0",
+                                    "name": "PMO",
+                                    "createType": "SYSTEM",
+                                    "createUserId": 0,
+                                    "relatedLables": []
+                                },
+                                {
+                                    "id": "255",
+                                    "showOrder": "0",
+                                    "name": "PMP",
+                                    "createType": "SYSTEM",
+                                    "createUserId": 0,
+                                    "relatedLables": []
+                                },
+                                {
+                                    "id": "256",
+                                    "showOrder": "0",
+                                    "name": "QA",
+                                    "createType": "SYSTEM",
+                                    "createUserId": 0,
+                                    "relatedLables": []
+                                },
+                                {
+                                    "id": "251",
+                                    "showOrder": "0",
+                                    "name": "风控",
+                                    "createType": "SYSTEM",
+                                    "createUserId": 0,
+                                    "relatedLables": []
+                                },
+                                {
+                                    "id": "257",
+                                    "showOrder": "0",
+                                    "name": "采购",
+                                    "createType": "SYSTEM",
+                                    "createUserId": 0,
+                                    "relatedLables": []
+                                },
+                                {
+                                    "id": "258",
+                                    "showOrder": "0",
+                                    "name": "成本管理",
+                                    "createType": "SYSTEM",
+                                    "createUserId": 0,
+                                    "relatedLables": []
+                                }]
+                        }]
+
                     },
                     {
                         "id": "11",
