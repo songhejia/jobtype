@@ -101,20 +101,6 @@ var labelCacheBean =
                                         "createType": "SYSTEM",
                                         "createUserId": 0,
                                         "relatedLables": [
-                                            {
-                                                "id": "35",
-                                                "showOrder": "1",
-                                                "name": "后端",
-                                                "createType": "SYSTEM",
-                                                "createUserId": 0
-                                            },
-                                            {
-                                                "id": "67",
-                                                "showOrder": "2",
-                                                "name": "前端",
-                                                "createType": "SYSTEM",
-                                                "createUserId": 0
-                                            }
                                         ]
                                     },
                                     {
@@ -156,27 +142,6 @@ var labelCacheBean =
                                         "createType": "SYSTEM",
                                         "createUserId": 0,
                                         "relatedLables": [
-                                            {
-                                                "id": "71",
-                                                "showOrder": "0",
-                                                "name": "Linux/unix",
-                                                "createType": "SYSTEM",
-                                                "createUserId": 0
-                                            },
-                                            {
-                                                "id": "51",
-                                                "showOrder": "0",
-                                                "name": "windows",
-                                                "createType": "SYSTEM",
-                                                "createUserId": 0
-                                            },
-                                            {
-                                                "id": "72",
-                                                "showOrder": "0",
-                                                "name": "Android",
-                                                "createType": "SYSTEM",
-                                                "createUserId": 0
-                                            }
                                         ]
                                     },
                                     {
@@ -250,27 +215,6 @@ var labelCacheBean =
                                         "createType": "SYSTEM",
                                         "createUserId": 0,
                                         "relatedLables": [
-                                            {
-                                                "id": "83",
-                                                "showOrder": "0",
-                                                "name": "对日",
-                                                "createType": "SYSTEM",
-                                                "createUserId": 0
-                                            },
-                                            {
-                                                "id": "30",
-                                                "showOrder": "0",
-                                                "name": "银行",
-                                                "createType": "SYSTEM",
-                                                "createUserId": 0
-                                            },
-                                            {
-                                                "id": "33",
-                                                "showOrder": "0",
-                                                "name": "日语",
-                                                "createType": "SYSTEM",
-                                                "createUserId": 0
-                                            }
                                         ]
                                     }
                                 ]
@@ -1201,55 +1145,6 @@ var labelCacheBean =
                             }
                         ],
                         "rankLables": [
-                            {
-                                "id": "1",
-                                "showOrder": "0",
-                                "name": "专家",
-                                "createType": "SYSTEM",
-                                "createUserId": 0
-                            },
-                            {
-                                "id": "2",
-                                "showOrder": "0",
-                                "name": "总监",
-                                "createType": "SYSTEM",
-                                "createUserId": 0
-                            },
-                            {
-                                "id": "3",
-                                "showOrder": "0",
-                                "name": "资深",
-                                "createType": "SYSTEM",
-                                "createUserId": 0
-                            },
-                            {
-                                "id": "4",
-                                "showOrder": "0",
-                                "name": "高级",
-                                "createType": "SYSTEM",
-                                "createUserId": 0
-                            },
-                            {
-                                "id": "5",
-                                "showOrder": "0",
-                                "name": "中级",
-                                "createType": "SYSTEM",
-                                "createUserId": 0
-                            },
-                            {
-                                "id": "6",
-                                "showOrder": "0",
-                                "name": "初级",
-                                "createType": "SYSTEM",
-                                "createUserId": 0
-                            },
-                            {
-                                "id": "7",
-                                "showOrder": "0",
-                                "name": "实习",
-                                "createType": "SYSTEM",
-                                "createUserId": 0
-                            }
                         ]
                     }
                 ],

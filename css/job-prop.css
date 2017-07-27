@@ -1122,8 +1122,8 @@ li {
 
 .release_position_container .position_item .form-item .position_list .it-list .it-list-top .it-list-two {
     width: 158px;
-    background-color: #f8f8f8;
-    min-height: 100%;
+    background-color: #EFF2F7;
+    min-height: 392px;
     float: left;
     overflow-y: hidden;
 }

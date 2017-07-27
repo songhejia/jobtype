@@ -841,10 +841,11 @@ $boxJob.on('click', '.other-list .list-tagmore', function (e) {
 //点击重置
 $boxJob.on('click', '.tag-bottom-reset', function (e) {
     $(this).hide();
+    $itListThree.hide();
     $('.tag-bottom-left').hide();
     position.chooseTags = [];
     if (position.sign == "it") {
-        renderLevel3(position.chooseLevel2, position.rankLables, position);
+        renderLevel3(position.chooseLevel3, position.rankLables, position);
     }
     if (position.sign == "other") {
         renderLevel3(position.chooseLevel1Other, position.rankLables, position);
