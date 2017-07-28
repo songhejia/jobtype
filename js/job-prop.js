@@ -832,7 +832,9 @@ $boxJob.on('click', '.other-list .list-tagmore', function (e) {
 
 //点击重置
 $boxJob.on('click', '.tag-bottom-reset', function (e) {
+    $boxJob.css('width', '318px');
     $(this).hide();
+    $tagList.hide();
     $itListThree.hide();
     $('.tag-bottom-left').hide();
     position.chooseTags = [];
