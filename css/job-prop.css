@@ -1042,6 +1042,16 @@ li {
     display: inherit;
     line-height: 44px;
     cursor: pointer;
+    text-align: center;
+}
+
+.release_position_container .position_item .form-item .position_list .list-bottom-tips {
+    color: #8492A6;
+    font-size: 14px;
+    margin-left: 12px;
+    display: inherit;
+    line-height: 44px;
+    cursor: pointer;
 }
 
 .release_position_container .position_item .form-item .position_list .list-bottom {
@@ -1053,6 +1063,7 @@ li {
     border-top: 1px dashed #d5dadf;
     height: 44px;
     line-height: 44px;
+    text-align: center;
 }
 
 .release_position_container .position_item .form-item .position_list .list-arrow {
@@ -1330,7 +1341,6 @@ li {
     margin-left: -3px;
     cursor: pointer;
     display: inline-block;
-
 }
 
 .release_position_container .position_item .form-item .position_list .tag-list .flowed {
@@ -1422,7 +1432,7 @@ li {
 
 .release_position_container .position_item .form-item .position_list .tag-list .tag-bottom {
     position: absolute;
-    bottom: 12px;
+    bottom: 50px;
     left: 0;
     padding-bottom: 12px;
     width: 364px;
@@ -1445,6 +1455,26 @@ li {
 .release_position_container .position_item .form-item .position_list .tag-list .tag-bottom .tag-bottom-left>span {
     font-size: 14px;
     color: #fc7061;
+}
+
+.release_position_container .position_item .form-item .position_list .tag-list .tag-bottom .tag-bottom-center {
+    position: absolute;
+    left: 140px;
+    bottom: 12px;
+    height: 18px;
+}
+
+.release_position_container .position_item .form-item .position_list .tag-list .tag-bottom-type {
+    color: #8492A6;
+    font-size: 14px;
+    display: inherit;
+    line-height: 44px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    border-top: 1px dashed #d5dadf;
+    background-color: #F8F8F8;
 }
 
 .release_position_container .position_item .form-item .position_list .tag-list .tag-bottom .tag-bottom-right {
