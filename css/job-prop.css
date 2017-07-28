@@ -1051,7 +1051,6 @@ li {
     margin-left: 12px;
     display: inherit;
     line-height: 44px;
-    cursor: pointer;
 }
 
 .release_position_container .position_item .form-item .position_list .list-bottom {
@@ -1501,6 +1500,7 @@ li {
     line-height: 37px;
     border: none;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .release_position_container .position_item .form-item .profile-radio-list li {
