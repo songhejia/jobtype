@@ -1798,9 +1798,6 @@ li {
 .tag-input {
     display: inline-block;
 }
-
-#tag-show {}
-
 #tag-show li {
     display: inline-block;
     margin: 0 5px;
