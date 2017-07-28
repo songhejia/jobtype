@@ -8,6 +8,7 @@ var $itList = $('#boxJob .it-list');
 var $otherList = $('#boxJob .other-list');
 var $tagList = $('#boxJob .tag-list');
 var $itListThree = $('#boxJob .it-list .it-list-three');
+var $tagShow = $('#tag-show');
 
 var position = {
     chooseLevel1: labelCacheBean.itCategoryL1List[0],        //被选择的一级选项
@@ -755,12 +756,7 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
     }
 
     //显示类别
-    if (position.sign == "it") {
-        $('#boxJobInput span').text(position.chooseLevel1.name + ' - ' + position.chooseLevel2.name + ' - ' + position.chooseLevel3.name + ' - ' + position.chooseTags.map(function (item) { return item.name }).join('/'));
-    } else {
-        $('#boxJobInput span').text(position.chooseLevel1Other.name);
-    }
-
+    showTagToBox();
 });
 
 
@@ -792,11 +788,7 @@ $boxJob.on('click', '.tag-close', function () {
         $('.tag-bottom .tag-bottom-left').hide();
     }
     //显示类别
-    if (position.sign == "it") {
-        $('#boxJobInput span').text(position.chooseLevel1.name + ' - ' + position.chooseLevel2.name + ' - ' + position.chooseTags.map(function (item) { return item.name }).join('/'));
-    } else {
-        $('#boxJobInput span').text(position.chooseLevel1Other.name);
-    }
+    showTagToBox();
 });
 
 /*点击查看其他类别*/
@@ -1041,4 +1033,12 @@ function mergeData() {
     }
 
     return collectDatas;
+}
+function showTagToBox() {
+    if (position.sign == "it") {
+        $('#boxJobInput span').text(position.chooseLevel1.name + ' - ' + position.chooseLevel2.name + ' - ' + position.chooseLevel3.name);
+        $tagShow.html(position.chooseTags.map(function (item) { return "<li>" + item.name + "</li>" }))
+    } else {
+        $('#boxJobInput span').text(position.chooseLevel1Other.name);
+    }
 }

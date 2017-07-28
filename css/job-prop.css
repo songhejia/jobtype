@@ -1794,3 +1794,24 @@ li {
 .release_position_container .position_item #education {
     display: none;
 }
+
+.tag-input {
+    display: inline-block;
+}
+
+#tag-show {}
+
+#tag-show li {
+    display: inline-block;
+    margin: 0 5px;
+    background-color: #00b38a;
+    border: 1px solid #00b38a;
+    color: #fff;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 10px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 8px;
+}
