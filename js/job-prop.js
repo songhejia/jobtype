@@ -67,7 +67,6 @@ function clearData1() {
 }
 
 
-
 //点击显示职位列表
 $("#boxJobInput").click(function () {
     if ($('#boxJob').is(":hidden")) {
@@ -832,10 +831,10 @@ $boxJob.on('click', '.other-list .list-tagmore', function (e) {
 
 //点击重置
 $boxJob.on('click', '.tag-bottom-reset', function (e) {
-    $boxJob.css('width', '318px');
+    // $boxJob.css('width', '318px');
     $(this).hide();
-    $tagList.hide();
-    $itListThree.hide();
+    // $tagList.hide();
+    // $itListThree.hide();
     $('.tag-bottom-left').hide();
     position.chooseTags = [];
     if (position.sign == "it") {
@@ -844,9 +843,9 @@ $boxJob.on('click', '.tag-bottom-reset', function (e) {
     if (position.sign == "other") {
         renderLevel3(position.chooseLevel1Other, position.rankLables, position);
     }
-
+    showTagToBox();
     $('#boxJobInput span').text('请选择职位类别');
-
+    // $('#boxJob .tag-bottom-right .tag-bottom-sure').click();
     e.stopPropagation();
     e.preventDefault();
 });
@@ -854,6 +853,7 @@ $boxJob.on('click', '.tag-bottom-reset', function (e) {
 //点击确定按钮
 $('#boxJob').on('click', '.tag-bottom-right .tag-bottom-sure', function (e) {
     $('#boxJob').hide();
+    $itListThree.hide();
     position.flag = true;
     saveDatas.chooseTags = position.chooseTags.map(function (item) {
         return $.extend({}, item);
