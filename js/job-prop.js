@@ -708,7 +708,7 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
             //当前选中节点的四级标签
             var currentShow4 = currentShow[thisNum] ? currentShow[thisNum].relatedLables : [];
             var html = "";
-            if (currentShow4.length > 0) {
+            if (currentShow4 && currentShow4.length > 0) {
                 for (var i = 0; i < currentShow4.length; i++) {
                     var L4Name = currentShow4[i].name;
                     var L4Id = currentShow4[i].id;
@@ -852,7 +852,7 @@ $boxJob.on('click', '.tag-bottom-reset', function (e) {
     // $('#boxJob .tag-bottom-right .tag-bottom-sure').click();
     e.stopPropagation();
     e.preventDefault();
-    $("#boxJobInput").attr("title","");
+    $("#boxJobInput").attr("title", "");
 });
 
 //点击确定按钮
@@ -886,7 +886,7 @@ $('#boxJob').on('click', '.tag-bottom-right .tag-bottom-sure', function (e) {
         }
         saveDatas.choosePositions = $('#boxJobInput span').text();
         chooseStyle = position.sign;
-        $("#boxJobInput").attr("title",saveDatas.choosePositions);
+        $("#boxJobInput").attr("title", saveDatas.choosePositions);
     } else {
         $('#boxJobInput span').text('请选择职位类别');
         $('#positionType').val("");

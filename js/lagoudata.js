@@ -31,7 +31,7 @@ var labelCacheBean =
                                         "name": "Java",
                                         "createType": "SYSTEM",
                                         "createUserId": 0,
-                                        "relatedLables": []
+                                        // "relatedLables": []
                                     }
                                 ]
                             },
