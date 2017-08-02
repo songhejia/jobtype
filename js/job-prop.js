@@ -349,35 +349,37 @@ function renderLevel3(fatherData, currentRank, marker) {
                 if (selected) {
                     //三级被选中，展示四级列表
                     var L4Labels = currentData[i].relatedLables;
-                    for (var j = 0; j < L4Labels.length; j++) {
-                        var L4Name = L4Labels[j].name;
-                        var L4Id = L4Labels[j].id;
+                    if (L4Labels)
+                        for (var j = 0; j < L4Labels.length; j++) {
+                            var L4Name = L4Labels[j].name;
+                            var L4Id = L4Labels[j].id;
 
-                        html += '<li class="L4List-item" data-id=' + L4Id + ' data-fatherid=' + L3Id + ' data-num=' + j + '>'
-                            + '<span>' + L4Name + '</span>'
-                            + '</li>';
-                    }
+                            html += '<li class="L4List-item" data-id=' + L4Id + ' data-fatherid=' + L3Id + ' data-num=' + j + '>'
+                                + '<span>' + L4Name + '</span>'
+                                + '</li>';
+                        }
                 } else {
                     var currentLevel4 = currentData[i].relatedLables;
-                    for (var k = 0; k < currentLevel4.length; k++) {
-                        var id = currentLevel4[k].id;
-                        var selectedL4 = position.chooseTags.filter(function (item) {
-                            return (item.level == 4);
-                        });
-                        var isExist = selectedL4.map(function (item) {
-                            return item.id;
-                        }).indexOf(parseInt(id, 10)) > -1;
-                        if (isExist) {
-                            for (var j = 0; j < currentLevel4.length; j++) {
-                                var L4Name = currentLevel4[j].name;
-                                var L4Id = currentLevel4[j].id;
+                    if (currentLevel4)
+                        for (var k = 0; k < currentLevel4.length; k++) {
+                            var id = currentLevel4[k].id;
+                            var selectedL4 = position.chooseTags.filter(function (item) {
+                                return (item.level == 4);
+                            });
+                            var isExist = selectedL4.map(function (item) {
+                                return item.id;
+                            }).indexOf(parseInt(id, 10)) > -1;
+                            if (isExist) {
+                                for (var j = 0; j < currentLevel4.length; j++) {
+                                    var L4Name = currentLevel4[j].name;
+                                    var L4Id = currentLevel4[j].id;
 
-                                html += '<li class="L4List-item" data-id=' + L4Id + ' data-fatherid=' + L3Id + ' data-num=' + j + '>'
-                                    + '<span>' + L4Name + '</span>'
-                                    + '</li>';
+                                    html += '<li class="L4List-item" data-id=' + L4Id + ' data-fatherid=' + L3Id + ' data-num=' + j + '>'
+                                        + '<span>' + L4Name + '</span>'
+                                        + '</li>';
+                                }
                             }
                         }
-                    }
                 }
             }
             //显示标签，隐藏文案
