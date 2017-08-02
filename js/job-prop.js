@@ -10,11 +10,14 @@ var $tagList = $('#boxJob .tag-list');
 var $itListThree = $('#boxJob .it-list .it-list-three');
 var $tagShow = $('#tag-show');
 
+if (!labelCacheBean.otherCategoryL1List)
+    labelCacheBean.otherCategoryL1List = []
+
 var position = {
     chooseLevel1: labelCacheBean.itCategoryL1List[0],        //被选择的一级选项
     chooseLevel2: labelCacheBean.itCategoryL1List[0].categoryL2s[0],        //被选择的二级选项
     chooseLevel3: labelCacheBean.itCategoryL1List[0].categoryL2s[0].categoryL3s[0],        //被选择的三级选项
-    chooseLevel1Other: labelCacheBean.otherCategoryL1List[0],   //被选择的一级选项other
+    chooseLevel1Other: labelCacheBean.otherCategoryL1List ? labelCacheBean.otherCategoryL1List[0] : [],   //被选择的一级选项other
     rankLables: "",            //存被选择的职级标签
     sign: "it",             //标记选择是it还是other
     flag: false,             //标记确定被点击过与否
