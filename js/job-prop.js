@@ -9,6 +9,7 @@ var $otherList = $('#boxJob .other-list');
 var $tagList = $('#boxJob .tag-list');
 var $itListThree = $('#boxJob .it-list .it-list-three');
 var $tagShow = $('#tag-show');
+var MaxChooseTag = 5
 
 if (!labelCacheBean.otherCategoryL1List)
     labelCacheBean.otherCategoryL1List = []
@@ -661,7 +662,7 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
     }
 
     //判断显示6个标签
-    if (position.chooseTags.length >= 6) {
+    if (position.chooseTags.length >= MaxChooseTag) {
         $('#boxJob .tag-bottom-left').show();
     }
 
@@ -674,7 +675,7 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
     if (isLevel3) {
         var fold = parseInt($me.attr('data-fold'), 10);
         //变数据
-        if (!index && count < 6) {
+        if (!index && count < MaxChooseTag) {
             position.chooseTags.push({
                 id: thisId,
                 name: thisName.trim(),
@@ -730,7 +731,7 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
             $me.attr('data-fold', '1');
         }
     } else if (isLevelRank) {
-        if (!index && count < 6) {
+        if (!index && count < MaxChooseTag) {
             position.chooseTags.push({
                 id: thisId,
                 name: thisName.trim(),
@@ -738,7 +739,7 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
             });
         }
     } else {
-        if (!index && count < 6) {
+        if (!index && count < MaxChooseTag) {
             position.chooseTags.push({
                 id: thisId,
                 name: thisName.trim(),
@@ -786,7 +787,7 @@ $boxJob.on('click', '.tag-close', function () {
         $('.tag-list .tag-selected-top').hide();
         $('.tag-bottom-reset').hide();
     }
-    if (labelsData < 6) {
+    if (labelsData < MaxChooseTag) {
         $('.tag-bottom .tag-bottom-left').hide();
     }
     //显示类别
@@ -954,12 +955,12 @@ function renderTags() {
         // }
     }
     $('.position-label').html(html);
-    if (collectDatas.length >= 6) {
+    if (collectDatas.length >= MaxChooseTag) {
         $('.position-label-write').css('display', 'none');   // 贴上框
         $('.position-label-add').hide();    //＋按钮
         $('.position-label-wa').val("");
     }
-    if (collectDatas.length < 6) {
+    if (collectDatas.length < MaxChooseTag) {
         if ($('.position-label-write').is(':hidden')) {
             $('.position-label-add').show();    //＋按钮
         }
@@ -979,8 +980,8 @@ function mergeData() {
         // 通过职位类别点选了职位标签
         collectDatas = getLablesData(saveDatas);
 
-        if (collectDatas.length >= 6) {
-            collectDatas = collectDatas.splice(0, 6);
+        if (collectDatas.length >= MaxChooseTag) {
+            collectDatas = collectDatas.splice(0, MaxChooseTag);
             return collectDatas;
         }
     }
@@ -1003,8 +1004,8 @@ function mergeData() {
         collectDatas = collectDatas.concat(tmp);
     }
 
-    if (collectDatas.length >= 6) {
-        collectDatas = collectDatas.splice(0, 6);
+    if (collectDatas.length >= MaxChooseTag) {
+        collectDatas = collectDatas.splice(0, MaxChooseTag);
         return collectDatas;
     }
 
@@ -1033,8 +1034,8 @@ function mergeData() {
         collectDatas = collectDatas.concat(tmp);
     }
 
-    if (collectDatas.length >= 6) {
-        collectDatas = collectDatas.splice(0, 6);
+    if (collectDatas.length >= MaxChooseTag) {
+        collectDatas = collectDatas.splice(0, MaxChooseTag);
     }
 
     return collectDatas;
