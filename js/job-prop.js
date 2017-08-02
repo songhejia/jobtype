@@ -78,7 +78,7 @@ $("#boxJobInput").click(function () {
             var height = $('body').scrollTop();
             $('#boxJob').show().attr("tabindex", -1).focus();
             $('body').scrollTop(height);
-            $("#boxJobInput").css('borderColor', '#00b38a');
+            // $("#boxJobInput").css('borderColor', '#00b38a');
             if (saveDatas.choosePositions == null) {
                 position.sign = "it";
             } else {
@@ -89,7 +89,7 @@ $("#boxJobInput").click(function () {
         }
     } else {
         $('#boxJob').hide();
-        $("#boxJobInput").css('borderColor', '#d5dadf');
+        // $("#boxJobInput").css('borderColor', '#d5dadf');
         if (saveDatas.choosePositions == null) {
             position.sign = "it";
             $("#boxJobInput span").text('请选择职位类别');
@@ -852,6 +852,7 @@ $boxJob.on('click', '.tag-bottom-reset', function (e) {
     // $('#boxJob .tag-bottom-right .tag-bottom-sure').click();
     e.stopPropagation();
     e.preventDefault();
+    $("#boxJobInput").attr("title","");
 });
 
 //点击确定按钮
@@ -885,6 +886,7 @@ $('#boxJob').on('click', '.tag-bottom-right .tag-bottom-sure', function (e) {
         }
         saveDatas.choosePositions = $('#boxJobInput span').text();
         chooseStyle = position.sign;
+        $("#boxJobInput").attr("title",saveDatas.choosePositions);
     } else {
         $('#boxJobInput span').text('请选择职位类别');
         $('#positionType').val("");
