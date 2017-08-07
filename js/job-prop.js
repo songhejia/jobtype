@@ -188,7 +188,9 @@ $(document).mouseup(function (e) {
                 position.sign = chooseStyle;
                 clearData1();
             }
-            //clearData2();
+            $tagShow.html(saveDatas.chooseTags.map(function (item) { return "<li>" + item.name + "</li>" }))
+            clearData2();
+            // showTagToBox();
         }
     }
 });
