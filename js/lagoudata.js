@@ -18,7 +18,7 @@ var labelCacheBean =
                                 "name": "后端开发",
                                 "funcLables": [
                                     {
-                                        "id": "8",
+                                        "id": "1",
                                         "showOrder": "2",
                                         "name": "后端开发",
                                         "createType": "SYSTEM",
@@ -26,7 +26,7 @@ var labelCacheBean =
                                         "relatedLables": []
                                     },
                                     {
-                                        "id": "9",
+                                        "id": "2",
                                         "showOrder": "3",
                                         "name": "Java",
                                         "createType": "SYSTEM",

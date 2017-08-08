@@ -9,6 +9,7 @@ var $otherList = $('#boxJob .other-list');
 var $tagList = $('#boxJob .tag-list');
 var $itListThree = $('#boxJob .it-list .it-list-three');
 var $tagShow = $('#tag-show');
+var $positionInitValue = $('#positionInitValue');
 var MaxChooseTag = 5
 
 if (!labelCacheBean.otherCategoryL1List)
@@ -31,14 +32,24 @@ var position = {
 var saveDatas = {
     chooseTags: [],
     choosePositions: null,
-    chooseLevel1: "",                //被选择的一级
-    chooseLevel2: "",                //被选择的二级
+    chooseLevel1: [],                //被选择的一级
+    chooseLevel2: [],                //被选择的二级
+    chooseLevel3: [],
     chooseLevel1Other: "",           //被选择的一级other
     level1Num: "",                   //标记it一级当前展示的位置
     level2Num: "",                   //标记it二级当前展示的位置
     level1OtherNum: "",              //标记other一级当前展示的位置
     rankLables: ""                    //存被选择的职级标签
 };
+
+// saveDatas.chooseTags.push({ id: 8, name: "后端开发" });
+// saveDatas.chooseTags.push({ id: 9, name: "Java" });
+// saveDatas.chooseLevel1.push({ id: 1, name: "开发/ 测试 / 运维类" });
+// saveDatas.chooseLevel2.push({ id: 1, name: "开发" });
+// saveDatas.chooseLevel3.push({ id: 1, name: "后端开发" });
+// saveDatas.choosePositions = "xxx";
+
+
 //已经存的style
 var chooseStyle = "";
 
@@ -46,6 +57,7 @@ var chooseStyle = "";
 var currShow = {
     chooseLevel1: "",                //被选择的一级
     chooseLevel2: "",                //被选择的二级
+    chooseLevel3: "",                //被选择的三级
     chooseLevel1Other: "",           //被选择的一级other
     level1Num: "",                      //标记it一级当前展示的位置
     level2Num: "",                      //标记it二级当前展示的位置
@@ -79,11 +91,12 @@ $("#boxJobInput").click(function () {
             $('#boxJob').show().attr("tabindex", -1).focus();
             $('body').scrollTop(height);
             // $("#boxJobInput").css('borderColor', '#00b38a');
-            if (saveDatas.choosePositions == null) {
-                position.sign = "it";
-            } else {
-                position.sign = chooseStyle;
-            }
+            // if (saveDatas.choosePositions == null) {
+            //     position.sign = "it";
+            // } else {
+            //     position.sign = chooseStyle;
+            // }
+            position.sign = "it";
             renderChange();
             rewriteData();
         }
@@ -99,6 +112,38 @@ $("#boxJobInput").click(function () {
     }
 });
 
+(function initData() {
+    var value = $positionInitValue.val();
+    if (!value) return;
+    var ary = value.split(',');
+    labelCacheBean.itCategoryL1List.forEach(function (level1) {//第一层
+        level1.categoryL2s.forEach(function (level2) {//第二层
+            level2.categoryL3s.forEach(function (level3) {//第三层
+                level3.funcLables.forEach(function (level4) {//第四层
+                    ary.forEach(function (v) {
+                        if (level4.id == v) {
+                            saveDatas.chooseLevel1 = level1;
+                            saveDatas.chooseLevel2 = level2;
+                            saveDatas.chooseLevel3 = level3;
+                            saveDatas.chooseTags.push({ id: parseInt(level4.id), name: level4.name });
+                            saveDatas.choosePositions = [level1.name, level2.name, level3.name].join('-');
+                            position.sign = 'it';
+                            chooseStyle = 'it';
+                            saveDatas.level1Num = labelCacheBean.itCategoryL1List.indexOf(level1);
+                            saveDatas.level2Num = level1.categoryL2s.indexOf(level2);
+                            saveDatas.level3Num = level2.categoryL3s.indexOf(level3);
+                            // renderChange();
+                            rewriteData();
+                            currShow.itChooseAgain = true;
+
+                        }
+                    })
+                })
+            })
+        })
+    });
+    showTagToBox();
+})();
 
 //回写数据
 function rewriteData() {
@@ -113,7 +158,7 @@ function rewriteData() {
             position.chooseLevel3 = saveDatas.chooseLevel3;
             position.level1Num = saveDatas.level1Num;
             position.level2Num = saveDatas.level2Num;
-            position.level3Num = saveDatas.level2Num;
+            position.level3Num = saveDatas.level3Num;
         } else {
             position.chooseLevel1Other = saveDatas.chooseLevel1Other;
             position.level1OtherNum = saveDatas.level1OtherNum;
@@ -646,9 +691,10 @@ $boxJob.on('click', '#tag-list3 li,#tag-rank-list li', function (e) {
                 position.rankLables = currShow.rankLables;
                 position.level2Num = currShow.level2Num;
             }
-
-            position.chooseLevel3 = currShow.chooseLevel3;
-            position.level3Num = currShow.level3Num;
+            if (currShow.chooseLevel3 != "") {
+                position.chooseLevel3 = currShow.chooseLevel3;
+                position.level3Num = currShow.level3Num;
+            }
             // currShow.chooseLevel2 = "";
             // currShow.rankLables = "";
             // currShow.level2Num = "";
