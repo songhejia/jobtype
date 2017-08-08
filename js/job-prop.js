@@ -9,7 +9,7 @@ var $otherList = $('#boxJob .other-list');
 var $tagList = $('#boxJob .tag-list');
 var $itListThree = $('#boxJob .it-list .it-list-three');
 var $tagShow = $('#tag-show');
-var $positionInitValue = $('#positionInitValue');
+var $positionInit = $('#positionInit');
 var MaxChooseTag = 5
 
 if (!labelCacheBean.otherCategoryL1List)
@@ -113,7 +113,7 @@ $("#boxJobInput").click(function () {
 });
 
 (function initData() {
-    var value = $positionInitValue.val();
+    var value = $positionInit.val();
     if (!value) return;
     var ary = value.split(',');
     labelCacheBean.itCategoryL1List.forEach(function (level1) {//第一层
