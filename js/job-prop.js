@@ -42,14 +42,6 @@ var saveDatas = {
     rankLables: ""                    //存被选择的职级标签
 };
 
-// saveDatas.chooseTags.push({ id: 8, name: "后端开发" });
-// saveDatas.chooseTags.push({ id: 9, name: "Java" });
-// saveDatas.chooseLevel1.push({ id: 1, name: "开发/ 测试 / 运维类" });
-// saveDatas.chooseLevel2.push({ id: 1, name: "开发" });
-// saveDatas.chooseLevel3.push({ id: 1, name: "后端开发" });
-// saveDatas.choosePositions = "xxx";
-
-
 //已经存的style
 var chooseStyle = "";
 
