@@ -1102,7 +1102,7 @@ function showTagToBox() {
 //让指定的DIV始终显示在屏幕正中间  
 function letDivCenter(divName) {
     var top = ($(window).height() - $(divName).height()) / 2;
-    var left = ($(window).width() - $(divName).width()) / 2;
+    var left = ($(window).width() - 838) / 2; //$(divName).width()
     var scrollTop = $(document).scrollTop();
     var scrollLeft = $(document).scrollLeft();
     $(divName).css({ position: 'absolute', 'top': top + scrollTop, left: left + scrollLeft }).show();
