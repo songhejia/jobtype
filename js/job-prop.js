@@ -10,7 +10,8 @@ var $tagList = $('#boxJob .tag-list');
 var $itListThree = $('#boxJob .it-list .it-list-three');
 var $tagShow = $('#tag-show');
 var $positionInit = $('#positionInit');
-var MaxChooseTag = 5
+var $divMask = $('#divMask');
+var MaxChooseTag = 5;
 
 if (!labelCacheBean.otherCategoryL1List)
     labelCacheBean.otherCategoryL1List = []
@@ -91,8 +92,9 @@ $("#boxJobInput").click(function () {
             position.sign = "it";
             renderChange();
             rewriteData();
-
+            $divMask.show();
             letDivCenter('#boxJob');
+
         }
     } else {
         $('#boxJob').hide();
@@ -210,28 +212,29 @@ function renderChange() {
     $('.tag-bottom .tag-bottom-left').hide();
 }
 
-//点击外面，隐藏职位列表
-$(document).mouseup(function (e) {
+//点击关闭窗口
+$("#closePop").click(function (e) {
+    $divMask.hide();
     var _con = $('#boxJob');   // 设置目标区域
     var _tar = $('#boxJobInput');
-    if (!_tar.is(e.target) && _tar.has(e.target).length === 0 && !_con.is(e.target) && _con.has(e.target).length === 0) { // Mark 1
-        if ($('#boxJob').is(':visible')) {
-            $(this).removeAttr("tabindex");
-            $('#boxJob').hide();
-            $("#boxJobInput").css('borderColor', '#d5dadf');
-            if (saveDatas.choosePositions == null) {
-                position.sign = "it";
-                $("#boxJobInput span").text('请选择职位类别');
-            } else {
-                $("#boxJobInput span").text(saveDatas.choosePositions);
-                position.sign = chooseStyle;
-                clearData1();
-            }
-            $tagShow.html(saveDatas.chooseTags.map(function (item) { return "<li>" + item.name + "</li>" }))
-            clearData2();
-            // showTagToBox();
+    // if (!_tar.is(e.target) && _tar.has(e.target).length === 0 && !_con.is(e.target) && _con.has(e.target).length === 0) { // Mark 1
+    if ($('#boxJob').is(':visible')) {
+        $(this).removeAttr("tabindex");
+        $('#boxJob').hide();
+        $("#boxJobInput").css('borderColor', '#d5dadf');
+        if (saveDatas.choosePositions == null) {
+            position.sign = "it";
+            $("#boxJobInput span").text('请选择职位类别');
+        } else {
+            $("#boxJobInput span").text(saveDatas.choosePositions);
+            position.sign = chooseStyle;
+            clearData1();
         }
+        $tagShow.html(saveDatas.chooseTags.map(function (item) { return "<li>" + item.name + "</li>" }))
+        clearData2();
+        // showTagToBox();
     }
+    // }
 });
 
 /*it一级渲染＋other一级渲染*/
@@ -903,6 +906,7 @@ $boxJob.on('click', '.tag-bottom-reset', function (e) {
 $('#boxJob').on('click', '.tag-bottom-right .tag-bottom-sure', function (e) {
     $('#boxJob').hide();
     $itListThree.hide();
+    $divMask.hide();
     position.flag = true;
     saveDatas.chooseTags = position.chooseTags.map(function (item) {
         return $.extend({}, item);

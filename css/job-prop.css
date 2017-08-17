@@ -479,14 +479,14 @@ li {
 .release_position_container,
 .release_share_container {
     background-color: #fff;
-    width: 1200px;
-    border: 1px solid #d5dadf;
-    border-radius: 4px;
+    /* width: 1200px; */
+    /* border: 1px solid #d5dadf; */
+    /* border-radius: 4px; */
 }
 
 .release_position_container {
     position: relative;
-    margin: 10px auto 100px auto;
+    /* margin: 10px auto 100px auto; */
 }
 
 .release_position_container .before-release {
@@ -504,7 +504,7 @@ li {
 
 .release_position_container .position_item {
     margin: 25px 0 0 100px;
-    width: 560px;
+    /* width: 560px; */
 }
 
 .release_position_container .position_item .position_item_header {
@@ -519,7 +519,7 @@ li {
 
 .release_position_container .position_item .form-item {
     margin-bottom: 26px;
-    position: relative;
+    /* position: relative; */
 }
 
 .release_position_container .position_item .form-item.labels-label {
@@ -1051,6 +1051,23 @@ li {
     margin-left: 12px;
     display: inherit;
     line-height: 44px;
+    font-weight: bold;
+}
+.release_position_container .position_item .form-item .position_list .list-top-tips {
+    color: #8492A6;
+    font-size: 14px;
+    margin-left: 12px;
+    /* display: inherit; */
+    line-height: 44px;
+    font-weight: bold;
+}
+.release_position_container .position_item .form-item .position_list .tag-top-cancel {
+    color: #FF4949;
+    font-size: 14px;
+    line-height: 44px;
+    position: absolute;
+    left: 10px;
+    cursor: pointer;
 }
 
 .release_position_container .position_item .form-item .position_list .list-bottom {
@@ -1060,6 +1077,17 @@ li {
     left: 0;
     width: 100%;
     border-top: 1px dashed #d5dadf;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
+.release_position_container .position_item .form-item .position_list .list-top {
+    background-color: #ededed;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px dashed #d5dadf;
     height: 44px;
     line-height: 44px;
     text-align: center;
@@ -1431,7 +1459,7 @@ li {
 
 .release_position_container .position_item .form-item .position_list .tag-list .tag-bottom {
     position: absolute;
-    bottom: 50px;
+    bottom: 10px;
     left: 0;
     padding-bottom: 12px;
     width: 364px;
@@ -1461,6 +1489,7 @@ li {
     left: 140px;
     bottom: 12px;
     height: 18px;
+    font-weight: bold;
 }
 
 .release_position_container .position_item .form-item .position_list .tag-list .tag-bottom-type {
@@ -1473,6 +1502,18 @@ li {
     text-align: center;
     width: 100%;
     border-top: 1px dashed #d5dadf;
+    background-color: #F8F8F8;
+}
+.release_position_container .position_item .form-item .position_list .tag-list .tag-top-type {
+    color: #8492A6;
+    font-size: 14px;
+    display: inherit;
+    line-height: 44px;
+    position: relative;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px dashed #d5dadf;
     background-color: #F8F8F8;
 }
 
@@ -1489,7 +1530,6 @@ li {
     cursor: pointer;
     display: none;
 }
-
 .release_position_container .position_item .form-item .position_list .tag-list .tag-bottom .tag-bottom-right .tag-bottom-sure {
     font-size: 14px;
     color: #fff;
